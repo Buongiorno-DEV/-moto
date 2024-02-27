@@ -1,3 +1,5 @@
+ESX = exports["es_extended"]:getSharedObject()
+
 local motospawnata = false
 
 Citizen.CreateThread(function()
