@@ -18,14 +18,14 @@ end)
 
 function SpawnMoto()
     if not motospawnata then
-        RequestModel(config.Modello)
-        while not HasModelLoaded(config.Modello) do
+        RequestModel(Config.Modello)
+        while not HasModelLoaded(Config.Modello) do
             Wait(500)
         end
 
         local playerPed = PlayerPedId()
         local coordinate = GetEntityCoords(playerPed)
-        local vehicle = CreateVehicle(config.Modello, coordinate, GetEntityHeading(playerPed), true, false)
+        local vehicle = CreateVehicle(Config.Modello, coordinate, GetEntityHeading(playerPed), true, false)
         TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
         motospawnata = true
     else
@@ -34,8 +34,8 @@ function SpawnMoto()
 end
 
 RegisterCommand("moto", function()
-    local closestPlayerPed = GetPlayerPed(-1)
-    local vita = GetEntityHealth(closestPlayerPed)
+    local ped = PlayerPedId()
+    local vita = GetEntityHealth(ped)
     if vita <= 0 then
         ESX.ShowNotification("Non puoi spawnare moto da morto!") 
     else
